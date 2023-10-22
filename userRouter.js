@@ -2,9 +2,9 @@ const express = require('express');
 const userDB = require('./userDB');
 const router = express.Router();
 
-router.get('/getUser', async (req, res)=>
+router.get('/getAllUser', async (req, res)=>
 {
-    let res_get_users = 
+    let res_get_allusers = 
     {
         status_code : 500,
         user : [] 
@@ -12,13 +12,13 @@ router.get('/getUser', async (req, res)=>
 
     try
     {
-        const rows = await userDB.getUser();
-        res_get_users.status_code = 200;
+        const rows = await userDB.getAllUser();
+        res_get_allusers.status_code = 200;
         if(rows.length > 0)
         {
             rows.forEach((user)=>
             {
-                res_get_users.user.push
+                res_get_allusers.user.push
                 ({
                     email : user.email,
                     password : user.password,
@@ -42,12 +42,12 @@ router.get('/getUser', async (req, res)=>
         //res.json(res_get_users);
         var result = '';
 
-        for(var i = 0; i < res_get_users.user.length; i++)
+        for(var i = 0; i < res_get_allusers.user.length; i++)
         {
             result += "========================================<br>";
-            result += " email : "+res_get_users.user[i].email+" <br>";
-            result += " password : "+res_get_users.user[i].password+" <br>";
-            result += " name : "+res_get_users.user[i].name+" <br>";
+            result += " email : "+res_get_allusers.user[i].email+" <br>";
+            result += " password : "+res_get_allusers.user[i].password+" <br>";
+            result += " name : "+res_get_allusers.user[i].name+" <br>";
             result += "========================================<br>";
             
             result += "<br>";
@@ -57,5 +57,14 @@ router.get('/getUser', async (req, res)=>
     }
 });
 
+router.post('/getUser', async (req, res) => { //login
+    const row = await userDB.getUser(req.body.email);
+    if(row !== null){
+        return res.status(200).json({success : true, row})
+    }
+    else{
+        return res.json({success : false, row})
+    }
+});
 
 module.exports = router;

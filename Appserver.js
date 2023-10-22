@@ -52,14 +52,16 @@ router.post('/user', (req, res) => {
   //var password = getPrameter("password");
   //&& password === 'password123'
 
-  if (req.body.email === 'user@example.com') {
-    const token = 'your_access_token'; 
-    console.log('login success');
-    res.json({ success: true, token });
-  } else {
-    res.status(401).json({ success: false, message: 'Authentication failed' });
-    console.log('login fail');
-  }
+  // if (req.body.email === 'user@example.com') {
+  //   const token = 'your_access_token'; 
+  //   console.log('login success');
+  //   res.json({ success: true, token });
+  // } else {
+  //   res.status(401).json({ success: false, message: 'Authentication failed' });
+  //   console.log('login fail');
+  // }
+
+  
 });
 
 module.exports = router;

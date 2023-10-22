@@ -12,7 +12,7 @@ const pool = mysql.createPool //접속 정보
     queueLimit: 0
 })
 
-const getUser = async ()=>
+const getAllUser = async ()=>
 {
     const promisePool = pool.promise();
     const [rows] = await promisePool.query('select * from user;');
@@ -20,7 +20,17 @@ const getUser = async ()=>
     return rows;
 };
 
+const getUser = async (req)=> //login
+{
+    const promisePool = pool.promise();
+    const row = await promisePool.query(`select * from yaming.user where email = ${req};`);
+    console.log(row);
+    return row;
+};
+
+
 module.exports = 
 {
-    getUser
+    getUser,
+    getAllUser
 };
