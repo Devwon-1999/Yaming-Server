@@ -59,8 +59,9 @@ router.get('/getAllUser', async (req, res)=>
 
 router.post('/getUser', async (req, res) => { //login
     const row = await userDB.getUser(req.body.email);
+
     if(row !== null){
-        return res.status(200).json({success : true, row})
+        return res.status(200).json({success : true, data : row[0][0]})
     }
     else{
         return res.json({success : false, row})
