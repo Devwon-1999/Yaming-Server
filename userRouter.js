@@ -68,4 +68,10 @@ router.post('/getUser', async (req, res) => { //login
     }
 });
 
+//회원가입 구현 필요
+router.get('/insertUser', async(req,res) => {
+    
+
+});
+
 module.exports = router;
