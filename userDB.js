@@ -25,6 +25,7 @@ const getUser = async (req)=> //login
     const promisePool = pool.promise();
     const row = await promisePool.query(`select * from yaming.user where email = '${req}';`);
     console.log(row);
+    console.log(req);
     return row;
 };
 
