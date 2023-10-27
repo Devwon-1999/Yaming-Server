@@ -69,8 +69,15 @@ router.post('/getUser', async (req, res) => { //login
 });
 
 //회원가입 구현 필요
-router.get('/insertUser', async(req,res) => {
-    
+router.get('/insertUser', async(req, res) => {
+    // const row = await userDB.getUser(req.body.email);
+
+    // if(row !== null){
+    //     return res.status(200).json({success : true, data : row[0][0]})
+    // }
+    // else{
+    //     return res.json({success : false, row})
+    // }
 
 });
 

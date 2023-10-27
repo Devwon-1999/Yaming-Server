@@ -25,12 +25,11 @@ const getUser = async (req)=> //login
     const promisePool = pool.promise();
     const row = await promisePool.query(`select * from yaming.user where email = '${req}';`);
     console.log(row);
-    console.log(req);
     return row;
 };
 
 //회원가입
-const insertUser = async (req, res) => 
+const insertUser = async (req) => 
 {
     const {name, email, password, phone, age, sex, height, weight} = req.body;
     const newUser = {name, email, password, phone, age, sex, height, weight};
