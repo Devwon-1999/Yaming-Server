@@ -38,7 +38,7 @@ const insertUser = async (req) =>
     console.log(req);
     const [rows] = await promisePool.query(`insert into yaming.user 
     (name, email, password, phone, age, sex, height, weight)
-    values (${req.data.name}, ${req.data.email}, ${req.data.password}, ${req.data.phone}, ${req.data.age}, ${req.data.sex}, ${req.data.height}, ${req.data.weight});`);
+    values ('${req.data.name}', '${req.data.email}', '${req.data.password}', '${req.data.phone}', ${req.data.age}, '${req.data.sex}', ${req.data.height}, ${req.data.weight});`);
     
     console.log(rows);
     //return rows;
