@@ -31,21 +31,22 @@ const getUser = async (req)=> //login
 //회원가입
 const insertUser = async (req) => 
 {
-    const {name, email, password, phone, age, sex, height, weight} = req.body;
-    const newUser = {name, email, password, phone, age, sex, height, weight};
+    //const {name, email, password, phone, age, sex, height, weight} = req.body;
+    //const newUser = {name, email, password, phone, age, sex, height, weight};
     const promisePool = pool.promise();
 
     const [rows] = await promisePool.query(`insert into yaming.user 
     (name, email, password, phone, age, sex, height, weight)
-    values ('Kim', '123@gmail.com', '1020', '010-2222-2222', 10, '여', 10, 10);`);
+    values (${req.name}, ${req.email}, ${req.password}, ${req.phone}, ${req.age}, ${req.sex}, ${req.height}, ${req.weight});`);
     
     console.log(rows);
-    return rows;
+    //return rows;
 };
 
 
 module.exports = 
 {
     getUser,
-    getAllUser
+    getAllUser,
+    insertUser
 };
