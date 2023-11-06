@@ -2,7 +2,7 @@ const mysql = require('mysql2');
 
 const pool = mysql.createPool //접속 정보
 ({
-    host: '34.168.81.56',
+    host: '34.83.97.178',
     user: 'root',
     database: 'yaming',
     password: 'qwer1234',
