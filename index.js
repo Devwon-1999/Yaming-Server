@@ -1,7 +1,3 @@
-// 서버 메인 코드
-//const express = require('필요한 모듈명')
-//npm run start (서버 시작)
-
 const express = require('express');
 const userRouter = require('./userRouter');
 const Appserver = require('./Appserver')

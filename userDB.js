@@ -12,7 +12,7 @@ const pool = mysql.createPool //접속 정보
     queueLimit: 0
 })
 
-const getAllUser = async ()=>
+const getAllUser = async ()=> //모든 유저 정보
 {
     const promisePool = pool.promise();
     const [rows] = await promisePool.query('select * from user;');
@@ -20,7 +20,7 @@ const getAllUser = async ()=>
     return rows;
 };
 
-const getUser = async (req)=> //login
+const getUser = async (req)=> //로그인
 {
     const promisePool = pool.promise();
     const row = await promisePool.query(`select * from yaming.user where email = '${req}';`);
@@ -28,11 +28,8 @@ const getUser = async (req)=> //login
     return row;
 };
 
-//회원가입
-const insertUser = async (req) => 
+const insertUser = async (req) => //회원가입
 {
-    //const {name, email, password, phone, age, sex, height, weight} = req.body;
-    //const newUser = {name, email, password, phone, age, sex, height, weight};
     const promisePool = pool.promise();
 
     console.log(req);
@@ -41,7 +38,6 @@ const insertUser = async (req) =>
     values ('${req.data.name}', '${req.data.email}', '${req.data.password}', '${req.data.phone}', ${req.data.age}, '${req.data.sex}', ${req.data.height}, ${req.data.weight});`);
     
     console.log(rows);
-    //return rows;
 };
 
 

@@ -37,9 +37,6 @@ router.get('/getAllUser', async (req, res)=>
     }
     finally
     {
-
-        //응답 
-        //res.json(res_get_users);
         var result = '';
 
         for(var i = 0; i < res_get_allusers.user.length; i++)
@@ -72,13 +69,6 @@ router.post('/getUser', async (req, res) => { //login
 router.post('/insertUser', async(req, res) => {
     await userDB.insertUser(req.body);
     return res.status(200).json({success : true})
-    // if(row !== null){
-    //     return res.status(200).json({success : true, data : row[0][0]})
-    // }
-    // else{
-    //     return res.json({success : false, row})
-    // }
-
 });
 
 module.exports = router;
