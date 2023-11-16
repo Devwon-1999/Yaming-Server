@@ -65,10 +65,17 @@ router.post('/getUser', async (req, res) => { //login
     }
 });
 
-//회원가입 구현 필요
-router.post('/insertUser', async(req, res) => {
+router.post('/insertUser', async(req, res) => { //회원가입
     await userDB.insertUser(req.body);
     return res.status(200).json({success : true})
 });
+
+router.post('/getUserData', async(req,res) => {
+    const row = await userDB.getUserData(req.body);
+    return res.status(200).json({success : true, data : row})
+});
+
+
+
 
 module.exports = router;
