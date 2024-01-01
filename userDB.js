@@ -2,11 +2,11 @@ const mysql = require('mysql2');
 
 const pool = mysql.createPool //접속 정보
 ({
-    host: '35.230.1.210',
+    host: '****',
     user: 'root',
-    database: 'yaming',
-    password: 'qwer1234',
-    port: '5000',
+    database: '****',
+    password: '****',
+    port: '****',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
